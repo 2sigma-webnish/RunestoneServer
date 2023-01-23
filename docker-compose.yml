@@ -10,6 +10,9 @@ services:
     volumes:
     - ./jobeinabox/files:/usr/local/lib/java
   runestone:
+    volumes:
+      - /runestone/BookServer:/srv/BookServer
+      - /runestone/RunestoneComponents:/srv/RunestoneComponents
     image: runestone/server
     restart: always
     ports:
@@ -34,7 +37,7 @@ services:
       WEB2PY_SALT: ${WEB2PY_SALT}
       JWT_SECRET: ${JWT_SECRET}
       # Misc vars.
-      REDIS_URI: "redis://redis:6379/0"
+      REDIS_URI: "redis://10.112.106.211:6379/0"
       RUNESTONE_HOST: ${RUNESTONE_HOST}
       CERTBOT_EMAIL: ${CERTBOT_EMAIL}
       LOAD_BALANCER_HOST: '${LOAD_BALANCER_HOST}'
